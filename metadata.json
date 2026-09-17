@@ -1,0 +1,7 @@
+{
+  "name": "Finance AI - Controle Financeiro Inteligente",
+  "description": "Dashboard financeiro inteligente com assistente FIN, gráficos interativos de evolução e despesas, calendário de vencimentos de faturas e pagamentos recorrentes, e integração bancária automática via Open Finance.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

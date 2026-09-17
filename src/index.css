@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyan-50: var(--theme-50);
+  --color-cyan-100: var(--theme-100);
+  --color-cyan-200: var(--theme-200);
+  --color-cyan-300: var(--theme-300);
+  --color-cyan-400: var(--theme-400);
+  --color-cyan-500: var(--theme-500);
+  --color-cyan-600: var(--theme-600);
+  --color-cyan-700: var(--theme-700);
+  --color-cyan-800: var(--theme-800);
+  --color-cyan-900: var(--theme-900);
+  --color-cyan-950: var(--theme-950);
+}
+
+:root {
+  /* Default Cyan (Cyber Blue) */
+  --theme-50: #ecfeff;
+  --theme-100: #cffafe;
+  --theme-200: #a5f3fc;
+  --theme-300: #67e8f9;
+  --theme-400: #22d3ee;
+  --theme-500: #06b6d4;
+  --theme-600: #0891b2;
+  --theme-700: #0e7490;
+  --theme-800: #155e75;
+  --theme-900: #164e63;
+  --theme-950: #083344;
+  --theme-glow-rgb: 6, 182, 212;
+}
+
+[data-theme="emerald"] {
+  /* Emerald Green */
+  --theme-50: #ecfdf5;
+  --theme-100: #d1fae5;
+  --theme-200: #a7f3d0;
+  --theme-300: #6ee7b7;
+  --theme-400: #34d399;
+  --theme-500: #10b981;
+  --theme-600: #059669;
+  --theme-700: #047857;
+  --theme-800: #065f46;
+  --theme-900: #064e3b;
+  --theme-950: #022c22;
+  --theme-glow-rgb: 16, 185, 129;
+}
+
+[data-theme="orange"] {
+  /* Sunset Orange */
+  --theme-50: #fff7ed;
+  --theme-100: #ffedd5;
+  --theme-200: #fed7aa;
+  --theme-300: #fdba74;
+  --theme-400: #fb923c;
+  --theme-500: #f97316;
+  --theme-600: #ea580c;
+  --theme-700: #c2410c;
+  --theme-800: #9a3412;
+  --theme-900: #7c2d12;
+  --theme-950: #431407;
+  --theme-glow-rgb: 249, 115, 22;
+}
+
+@layer utilities {
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(var(--theme-glow-rgb), 0.25), inset 0 0 15px rgba(var(--theme-glow-rgb), 0.1);
+  }
+  .glow-cyan-sm {
+    box-shadow: 0 0 10px rgba(var(--theme-glow-rgb), 0.2);
+  }
+  .glow-cyan-strong {
+    box-shadow: 0 0 25px rgba(var(--theme-glow-rgb), 0.45);
+  }
+  .glow-red {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
+  }
+  .glow-orange {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+  }
+  .glow-green {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+  }
+  .glow-blue {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -12px, 0) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+  .animate-fade-in-down {
+    animation: fadeInDown 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes neonPulse {
+    0%, 100% {
+      box-shadow: 0 0 16px rgba(var(--theme-glow-rgb, 6, 182, 212), 0.28),
+                  0 0 32px rgba(var(--theme-glow-rgb, 6, 182, 212), 0.14),
+                  inset 0 0 15px rgba(var(--theme-glow-rgb, 6, 182, 212), 0.08);
+      border-color: rgba(var(--theme-glow-rgb, 6, 182, 212), 0.45);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(var(--theme-glow-rgb, 6, 182, 212), 0.6),
+                  0 0 55px rgba(var(--theme-glow-rgb, 6, 182, 212), 0.3),
+                  inset 0 0 24px rgba(var(--theme-glow-rgb, 6, 182, 212), 0.16);
+      border-color: rgba(var(--theme-glow-rgb, 6, 182, 212), 0.9);
+    }
+  }
+
+  .neon-pulse {
+    animation: neonPulse 2.8s ease-in-out infinite;
+  }
+}
+
+/* Animated Continuous Contour Button - outer-dashoffset & inner-dashoffset */
+@keyframes outer-dashoffset {
+  0% {
+    stroke-dasharray: 28% 72%;
+    stroke-dashoffset: 0%;
+  }
+  25% {
+    stroke-dasharray: 65% 35%;
+    stroke-dashoffset: -50%;
+  }
+  50% {
+    stroke-dasharray: 20% 80%;
+    stroke-dashoffset: -100%;
+  }
+  75% {
+    stroke-dasharray: 70% 30%;
+    stroke-dashoffset: -150%;
+  }
+  100% {
+    stroke-dasharray: 28% 72%;
+    stroke-dashoffset: -200%;
+  }
+}
+
+@keyframes inner-dashoffset {
+  0% {
+    stroke-dasharray: 20% 80%;
+    stroke-dashoffset: 0%;
+  }
+  25% {
+    stroke-dasharray: 55% 45%;
+    stroke-dashoffset: 50%;
+  }
+  50% {
+    stroke-dasharray: 15% 85%;
+    stroke-dashoffset: 100%;
+  }
+  75% {
+    stroke-dasharray: 60% 40%;
+    stroke-dashoffset: 150%;
+  }
+  100% {
+    stroke-dasharray: 20% 80%;
+    stroke-dashoffset: 200%;
+  }
+}
+
+.Button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 9999px;
+  transform: scale(1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease;
+  user-select: none;
+  text-decoration: none;
+}
+
+.Button:hover {
+  transform: scale(1.05);
+}
+
+.Button-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.Button-line {
+  transition: stroke 0.3s ease, filter 0.3s ease;
+}
+
+.Button-line--outer {
+  stroke: #06B6D4;
+  animation: outer-dashoffset 4.2s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(6, 182, 212, 0.5));
+}
+
+.Button-line--inner {
+  stroke: #3B82F6;
+  animation: inner-dashoffset 4.8s linear infinite;
+  filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.5));
+}
+
+/* Pause animation and shift color on hover */
+.Button:hover .Button-line {
+  animation-play-state: paused;
+}
+
+.Button:hover .Button-line--outer {
+  stroke: #67E8F9;
+  filter: drop-shadow(0 0 6px rgba(103, 232, 249, 0.9));
+}
+
+.Button:hover .Button-line--inner {
+  stroke: #93C5FD;
+  filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.9));
+}
+
+.Button-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  color: #f8fafc;
+  padding: 9px 20px;
+  transition: color 0.25s ease;
+}
+
+.Button:hover .Button-content {
+  color: #ffffff;
+}
+
+/* Custom cyber scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #060b14;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-800, #155e75);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-500, #06b6d4);
+}

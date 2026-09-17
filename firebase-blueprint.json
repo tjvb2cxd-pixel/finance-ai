@@ -1,0 +1,93 @@
+{
+  "entities": {
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Financial transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "categoryKey": { "type": "string" },
+        "date": { "type": "string" },
+        "rawDate": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string", "enum": ["income", "expense"] },
+        "bankId": { "type": "string" },
+        "bankName": { "type": "string" },
+        "bankSlug": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "amount", "type", "date"]
+    },
+    "BankAccount": {
+      "title": "BankAccount",
+      "description": "Connected bank account or wallet",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "balance": { "type": "number" },
+        "availableBalance": { "type": "number" },
+        "accountType": { "type": "string" },
+        "accountNumber": { "type": "string" },
+        "agency": { "type": "string" },
+        "color": { "type": "string" },
+        "lastSync": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "name", "slug", "balance"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "avatarId": { "type": "string" },
+        "roleDescription": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "FixedExpenseItem": {
+      "title": "FixedExpenseItem",
+      "description": "Recurring monthly fixed expense item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "dueDay": { "type": "number" },
+        "frequency": { "type": "string" },
+        "status": { "type": "string" },
+        "bankSlug": { "type": "string" },
+        "bankName": { "type": "string" },
+        "barcode": { "type": "string" },
+        "autoDebit": { "type": "boolean" }
+      },
+      "required": ["id", "title", "amount", "dueDay"]
+    }
+  },
+  "firestore": {
+    "transactions": {
+      "entity": "Transaction",
+      "description": "Financial transactions"
+    },
+    "banks": {
+      "entity": "BankAccount",
+      "description": "User bank accounts"
+    },
+    "profiles": {
+      "entity": "UserProfile",
+      "description": "User profiles"
+    },
+    "fixedExpenses": {
+      "entity": "FixedExpenseItem",
+      "description": "Fixed recurring expenses"
+    }
+  }
+}

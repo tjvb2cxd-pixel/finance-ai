@@ -1,0 +1,13 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+patch-*
+fix-*
+fix_*
+test-*
+update_components.sh
